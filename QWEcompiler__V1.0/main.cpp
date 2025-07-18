@@ -1,6 +1,14 @@
-﻿#include <iostream>
+﻿#include "compile_errors.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    try
+    {
+
+    }
+    catch (compile_errors ce)
+    {
+        std::cerr << "Compile error\n";
+        std::cerr << ce.what() <<"\n";
+    }
 }
