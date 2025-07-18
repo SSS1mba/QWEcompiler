@@ -1,4 +1,4 @@
-﻿#include "compile_errors.h"
+﻿#include "Interpretator.h"
 
 int main()
 {
