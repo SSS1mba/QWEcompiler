@@ -6,7 +6,7 @@ int main()
     {
 
     }
-    catch (compile_errors ce)
+    catch (compile_error ce)
     {
         std::cerr << "Compile error\n";
         std::cerr << ce.what() <<"\n";

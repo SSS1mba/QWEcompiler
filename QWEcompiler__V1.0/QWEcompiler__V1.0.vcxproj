@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="data_types.cpp" />
+    <ClCompile Include="InstuctionController.cpp" />
     <ClCompile Include="Interpretator.cpp" />
     <ClCompile Include="compile_errors.cpp" />
     <ClCompile Include="Lexer.cpp" />
@@ -138,8 +140,11 @@
     <Text Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="data_types.h" />
+    <ClInclude Include="InstuctionController.h" />
     <ClInclude Include="Interpretator.h" />
     <ClInclude Include="compile_errors.h" />
+    <ClInclude Include="KeyWords.h" />
     <ClInclude Include="Lexer.h" />
     <ClInclude Include="Parser.h" />
   </ItemGroup>
