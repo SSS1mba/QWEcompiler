@@ -16,7 +16,7 @@ inline size_t skip_white_space(const std::string& str, const size_t start_pos = 
 class Lexer
 {
 public:
-	std::queue<Token, std::vector<Token>> analyse(const std::string& source_code,size_t start, size_t end, InputKeys keys)
+	std::queue<Token, std::vector<Token>> analyse(const std::string& source_code,size_t start, size_t end, InputKeys keys) const
 	{
 		std::queue<Token,std::vector<Token>> token_queue;
 

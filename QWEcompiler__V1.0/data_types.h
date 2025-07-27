@@ -30,9 +30,10 @@ enum token_type : int
 
 struct Token
 {
-	Token(token_type t) : type(t) {}
+	Token(token_type t = quas) : type(t) {}
 
 	token_type type;
+
 };
 
 
