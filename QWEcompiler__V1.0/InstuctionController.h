@@ -1,14 +1,14 @@
 #pragma once
 
-#include <vector>
+#include <queue>
 #include "data_types.h"
 
 class InstuctionController
 {
 public:
-	void compute(std::vector<Instuction>&& instuction_set)
+	void compute(std::queue<Instuction, std::vector<Instuction>> instuction_set)
 	{
-
+		
 	}
 };
 

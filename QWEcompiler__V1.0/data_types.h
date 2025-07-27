@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Spells.h"
 
 struct InputKeys
 {
@@ -19,7 +20,7 @@ struct InputKeys
 
 
 
-enum token_type
+enum token_type : int
 {
 	quas	= 0,
 	wex		= 1,
@@ -29,16 +30,15 @@ enum token_type
 
 struct Token
 {
+	Token(token_type t) : type(t) {}
+
 	token_type type;
 };
 
 
 
-enum Spells
-{
-	// 9 спелов
-};
 struct Instuction
 {
-	Spells spell;
+	Instuction(Spell& s) : spell(s) {}
+	Spell spell;
 };

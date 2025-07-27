@@ -18,6 +18,7 @@ v - как invoke
 2.2) при отсутсвии input:  будет установлено значение по умолчанию
 q w e r
 
+2.3)Инструкция input должна стоять ДО base
 
 3)далее идет сам код - набор символов 
 например qwerwwwwrwwer
@@ -49,6 +50,7 @@ v is interpreted as invoke
 2.2) if input: is not specified, the default value will be set
 q w e r
 
+2.3)Instruction "input" must be BEFORE "base"
 
 3)Next comes the code itself - a set of characters 
 for example qwerwwwwrwwer

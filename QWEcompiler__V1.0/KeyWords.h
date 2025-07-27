@@ -1,9 +1,9 @@
 #pragma once
 
 #define KEYWORD_BASE		"base"
-#define WORD_BASE_LENGHT	4i64			
+constexpr size_t WORD_BASE_LENGHT = 4;
 
 #define KEYWORD_INPUT		"input:"
-#define WORD_INPUT_LENGHT	6i64			//длина строки input: - 6 символов :)
+constexpr size_t WORD_INPUT_LENGHT = 6;			//длина строки input: - 6 символов :)
 
 #define KEYWORD_AMIEN		"amien"
