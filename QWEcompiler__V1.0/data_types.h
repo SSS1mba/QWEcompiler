@@ -3,8 +3,10 @@
 
 struct InputKeys
 {
-	InputKeys(char quas_button = 'q', char wex_button = 'w', char exort_button = 'e', char invole_button = 'r')
-		:quas_button(quas_button), wex_button(wex_button), exort_button(exort_button), invole_button(invole_button)
+	InputKeys(char quas_button = 'q', char wex_button = 'w', 
+		char exort_button = 'e', char invole_button = 'r')
+		:quas_button(quas_button), wex_button(wex_button),
+		exort_button(exort_button), invole_button(invole_button)
 	{
 
 	}

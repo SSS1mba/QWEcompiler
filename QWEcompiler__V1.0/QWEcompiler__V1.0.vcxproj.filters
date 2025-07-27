@@ -21,7 +21,7 @@
     <ClCompile Include="compile_errors.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Interpretator.cpp">
+    <ClCompile Include="Compiler.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Lexer.cpp">
@@ -44,7 +44,7 @@
     <ClInclude Include="compile_errors.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Interpretator.h">
+    <ClInclude Include="Compiler.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Lexer.h">

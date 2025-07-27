@@ -1,4 +1,4 @@
-﻿#include "Interpretator.h"
+﻿#include "Compiler.h"
 
 int main()
 {
