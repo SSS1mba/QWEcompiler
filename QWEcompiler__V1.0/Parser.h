@@ -13,13 +13,19 @@ constexpr int WEIGHT_OF_WEX		= 3;
 constexpr int WEIGHT_OF_EXORT	= 27;
 
 
+struct Sphere
+{
+	Sphere(int weight = WEIGHT_OF_QUAS) : weiht_(weight) {}
+	const int weiht_;
+};
+
 class Book
 {
 public:
-	Book(size_t capacity_of_book_ = DEFAULT_CAPACITY_OF_BOOK) : capacity_of_book_(capacity_of_book_)
+	Book(size_t capacity_of_book_ = DEFAULT_CAPACITY_OF_BOOK) : capacity_of_book_(capacity_of_book_), size_of_book(0),
+		spheres (new Sphere[capacity_of_book_])
 	{
-		spheres = new Sphere[capacity_of_book_];
-		size_of_book = 0;
+		
 	}
 
 	void add_sphere() const
@@ -38,14 +44,9 @@ private:
 	Sphere* spheres;
 
 };
-struct Sphere
-{
-	Sphere(int weight = WEIGHT_OF_QUAS) : weiht_(weight) {}
-	const int weiht_;
-};
 
 
-std::allocator< std::vector<Instuction>> instruction_alloc;
+static std::allocator< std::vector<Instuction>> instruction_alloc;
 using instuction_traits = std::allocator_traits< std::allocator< std::vector<Instuction>>>;
 
 

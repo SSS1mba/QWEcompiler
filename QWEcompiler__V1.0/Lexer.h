@@ -12,7 +12,7 @@ inline size_t skip_white_space(const std::string& str, const size_t start_pos = 
 }
 
 
-std::allocator< std::vector<Token>> token_alloc;
+static std::allocator< std::vector<Token>> token_alloc;
 using token_traits = std::allocator_traits< std::allocator< std::vector<Token>>>;
 
 

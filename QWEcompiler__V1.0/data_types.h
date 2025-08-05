@@ -49,6 +49,10 @@ private:
 class Instuction
 {
 public:
+	Instuction()
+	{
+
+	}
 	Instuction(Spell& s) : spell(s) {}
 
 	Spell GET_spell()  const noexcept { return spell; }
