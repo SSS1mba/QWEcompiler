@@ -4,6 +4,6 @@
 class compile_error : public std::runtime_error
 {
 public:
-	compile_error(std::string msg) : std::runtime_error("msg") {}
+	compile_error(const char* const  msg) : std::runtime_error(msg) {}
 };
 

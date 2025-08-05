@@ -2,6 +2,8 @@
 
 #include "Spells.h"
 
+
+//General
 struct InputKeys
 {
 	InputKeys(char quas_button = 'q', char wex_button = 'w', 
@@ -11,14 +13,15 @@ struct InputKeys
 	{
 
 	}
-	char quas_button;
-	char wex_button;
-	char exort_button;
-	char invole_button;
+	
+	const char quas_button;
+	const char wex_button;
+	const char exort_button;
+	const char invole_button;
 };
 
 
-
+//Lexer
 enum token_type : int
 {
 	quas	= 0,
@@ -26,7 +29,6 @@ enum token_type : int
 	exort	= 2,
 	invoke  = 3
 };
-
 class Token
 {
 public:
@@ -36,7 +38,7 @@ public:
 	}
 	Token(token_type t ) : type(t) {}
 
-	token_type GET_token_type() const noexcept{ return type; }
+	inline token_type GET_token_type() const noexcept{ return type; }
 
 private:
 
@@ -45,7 +47,45 @@ private:
 };
 
 
+//Parser
+struct Sphere
+{
+	Sphere() {}
+	Sphere(size_t weight) : weight_(weight) {}
 
+	inline size_t GET_weight() const noexcept { return weight_; }
+private:
+	size_t weight_;
+};
+
+class Book
+{
+public:
+	Book(size_t capacity_of_book_ = DEFAULT_CAPACITY_OF_BOOK) : capacity_of_book_(capacity_of_book_), size_of_book(0),
+		spheres(new Sphere[capacity_of_book_])
+	{
+
+	}
+
+	void add_sphere() const
+	{
+
+	}
+	void invoke()	const
+	{
+		if (size_of_book != capacity_of_book_) throw compile_error("There are less than 3 spheres in the book!");
+	}
+
+
+private:
+	const size_t capacity_of_book_;
+	size_t size_of_book;
+	Sphere* spheres;
+
+};
+
+
+//InstuctionController
 class Instuction
 {
 public:
@@ -55,7 +95,7 @@ public:
 	}
 	Instuction(Spell& s) : spell(s) {}
 
-	Spell GET_spell()  const noexcept { return spell; }
+	inline Spell GET_spell()  const noexcept { return spell; }
 
 private:
 	Spell spell;
