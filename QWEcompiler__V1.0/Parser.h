@@ -1,6 +1,6 @@
 #pragma once
 
-#include <queue>
+#include <vector>
 #include "compile_errors.h"
 #include "data_types.h"
 #include "KeyWords.h"
@@ -13,36 +13,6 @@ constexpr int WEIGHT_OF_WEX		= 3;
 constexpr int WEIGHT_OF_EXORT	= 27;
 
 
-class Parser
-{
-public:
-	std::queue<Instuction,std::vector<Instuction>> parse(std::queue<Token, std::vector<Token>>& tokens)
-	{
-		std::queue<Instuction, std::vector<Instuction>> instuction_queue;
-
-		while (!tokens.empty())
-		{
-			tokens.front() ;
-		}
-
-		return instuction_queue;
-	}
-
-	Parser(Book book = Book()) : book_(book) {}
-
-private:
-	Book book_;
-};
-
-
-
-struct Sphere
-{
-	Sphere(int weight = WEIGHT_OF_QUAS) : weiht_(weight) {}
-	const int weiht_;
-};
-
-
 class Book
 {
 public:
@@ -51,7 +21,7 @@ public:
 		spheres = new Sphere[capacity_of_book_];
 		size_of_book = 0;
 	}
-	
+
 	void add_sphere() const
 	{
 
@@ -62,10 +32,46 @@ public:
 	}
 
 
-	private :
-		const size_t capacity_of_book_;
-		size_t size_of_book;
-		Sphere* spheres;
-	
+private:
+	const size_t capacity_of_book_;
+	size_t size_of_book;
+	Sphere* spheres;
+
 };
+struct Sphere
+{
+	Sphere(int weight = WEIGHT_OF_QUAS) : weiht_(weight) {}
+	const int weiht_;
+};
+
+
+std::allocator< std::vector<Instuction>> instruction_alloc;
+using instuction_traits = std::allocator_traits< std::allocator< std::vector<Instuction>>>;
+
+
+class Parser
+{
+public:
+	std::vector<Instuction>* parse(std::vector<Token>* tokens)
+	{
+		auto instuctions = instuction_traits::allocate(instruction_alloc,1);
+		instuction_traits::construct(instruction_alloc, instuctions, tokens->size() / 4); // тк одна инструкция - это 4 токена (3 сферы + invoke)
+
+		for (const auto& token : *tokens)
+		{
+
+		}
+
+		return instuctions;
+	}
+
+	Parser(const Book& book) : book_(book) {}
+
+private:
+	Book book_;
+};
+
+
+
+
 

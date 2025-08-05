@@ -6,9 +6,12 @@
 class InstuctionController
 {
 public:
-	void compute(std::queue<Instuction, std::vector<Instuction>> instuction_set)
+	void compute(std::vector<Instuction>* instuctions)
 	{
-		
+		for (const auto& instruction : *instuctions)
+		{
+
+		}
 	}
 };
 

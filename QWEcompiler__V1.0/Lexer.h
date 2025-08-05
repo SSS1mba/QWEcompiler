@@ -1,6 +1,6 @@
 #pragma once
 
-#include <queue>
+#include <vector>
 #include "compile_errors.h"
 #include "data_types.h"
 #include "KeyWords.h"
@@ -12,27 +12,31 @@ inline size_t skip_white_space(const std::string& str, const size_t start_pos = 
 }
 
 
+std::allocator< std::vector<Token>> token_alloc;
+using token_traits = std::allocator_traits< std::allocator< std::vector<Token>>>;
+
 
 class Lexer
 {
 public:
-	std::queue<Token, std::vector<Token>> analyse(const std::string& source_code,size_t start, size_t end, InputKeys keys) const
+	std::vector<Token>* analyse(const std::string& source_code,size_t start, size_t end,const InputKeys& keys) const
 	{
-		std::queue<Token,std::vector<Token>> token_queue;
+		auto tokens = token_traits::allocate(token_alloc,1);
+		token_traits::construct(token_alloc, tokens, source_code.length());
 
 		for (size_t current = start; start <= end; ++current)
 		{
 			current = skip_white_space(source_code, current);
 
-			if (source_code[current] == keys.quas_button)	token_queue.emplace(token_type::quas);
-			if (source_code[current] == keys.wex_button)	token_queue.emplace(token_type::wex);
-			if (source_code[current] == keys.exort_button)	token_queue.emplace(token_type::exort);
-			if (source_code[current] == keys.invole_button) token_queue.emplace(token_type::invoke);
+			if (source_code[current] == keys.quas_button)	{ tokens->emplace_back(token_type::quas);	continue; }
+			if (source_code[current] == keys.wex_button)	{ tokens->emplace_back(token_type::wex);	continue; }
+			if (source_code[current] == keys.exort_button)	{ tokens->emplace_back(token_type::exort);	continue; }
+			if (source_code[current] == keys.invole_button) { tokens->emplace_back(token_type::invoke);	continue; }
 
 			else throw compile_error("Unknown_token");
 		}
 
-		return token_queue;
+		return tokens;
 	}
 };
 

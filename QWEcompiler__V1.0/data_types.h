@@ -19,7 +19,6 @@ struct InputKeys
 
 
 
-
 enum token_type : int
 {
 	quas	= 0,
@@ -28,9 +27,18 @@ enum token_type : int
 	invoke  = 3
 };
 
-struct Token
+class Token
 {
-	Token(token_type t = quas) : type(t) {}
+public:
+	Token()
+	{
+
+	}
+	Token(token_type t ) : type(t) {}
+
+	token_type GET_token_type() const noexcept{ return type; }
+
+private:
 
 	token_type type;
 
@@ -38,8 +46,13 @@ struct Token
 
 
 
-struct Instuction
+class Instuction
 {
+public:
 	Instuction(Spell& s) : spell(s) {}
+
+	Spell GET_spell()  const noexcept { return spell; }
+
+private:
 	Spell spell;
 };

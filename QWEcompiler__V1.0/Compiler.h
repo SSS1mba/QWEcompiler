@@ -4,11 +4,12 @@
 #include "Parser.h"
 #include "InstuctionController.h"
 
+const Book DEFAULT_BOOK;
 
 class Compiler
 {
 public :
-	Compiler(const Lexer& lexer = Lexer(), const Parser& parser = Parser(),
+	Compiler(const Lexer& lexer = Lexer(), const Parser& parser = Parser(DEFAULT_BOOK),
 		const InstuctionController& IC = InstuctionController())
 		: lexer_(lexer), parser_(parser),instruction_controller_(IC) {}
 
@@ -18,9 +19,9 @@ public :
 		InputKeys keys = find_keys (source_code);
 		size_t end     = find_end  (source_code);
 
-		auto&& tokens_queue = lexer_.analyse(source_code, start, end, keys);
-		auto&& instruction_queue = parser_.parse(tokens_queue);
-		instruction_controller_.compute(instruction_queue);
+		auto tokens = lexer_.analyse(source_code, start, end, keys);
+		auto instructions = parser_.parse(tokens);
+		instruction_controller_.compute(instructions);
 	}
 private:
 	size_t find_start(const std::string& source_code) const
