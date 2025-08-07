@@ -13,7 +13,7 @@ public :
 		const InstuctionController& IC = InstuctionController())
 		: lexer_(lexer), parser_(parser),instruction_controller_(IC) {}
 
-	void interpritate(const std::string& source_code , const std::string& file_name)
+	void Compile(const std::string& source_code , const std::string& file_name)
 	{
 		size_t start   = find_start(source_code);
 		InputKeys keys = find_keys (source_code);
@@ -40,7 +40,7 @@ private:
 		if (input_pos == std::string::npos) return InputKeys();		//вернули значение по-умолчанию ,тк не нашли input:
 
 		if(input_pos + WORD_INPUT_LENGHT >= source_code.length())	
-			throw compile_error("Incorrect input: use	 :(");		//вышли за пределы строки
+			throw compile_error("Incorrect input: use	 :(");		//исключаем случай , когда input в конце строки
 		 
 
 		input_pos += WORD_INPUT_LENGHT;

@@ -8,7 +8,20 @@
 
 inline size_t skip_white_space(const std::string& str, const size_t start_pos = 0) noexcept
 {
-	return str.find_last_not_of(" \t\n\r\f\v", start_pos);
+	size_t result = start_pos;
+
+	for(;;++result)
+	{
+
+		if (result > str.length()) throw compile_error("skip_white_space -> result > str.length()");
+
+		if (str[result] == ' ')		continue;
+		if (str[result] == '\t')	continue;
+		if (str[result] == '\n')	continue;
+
+		break;
+	}
+	return result;
 }
 
 
@@ -22,9 +35,10 @@ public:
 	std::vector<Token>* analyse(const std::string& source_code,size_t start, size_t end,const InputKeys& keys) const
 	{
 		auto tokens = token_traits::allocate(token_alloc,1);
-		token_traits::construct(token_alloc, tokens, source_code.length());
+		token_traits::construct(token_alloc, tokens);
+		tokens->reserve(source_code.length());
 
-		for (size_t current = start; start <= end; ++current)
+		for (size_t current = start; current < end; ++current)
 		{
 			current = skip_white_space(source_code, current);
 

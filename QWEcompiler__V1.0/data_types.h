@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Spells.h"
+#include "compile_errors.h"
 
 
-//General
+//////////////////////////////////////////////////////General
 struct InputKeys
 {
 	InputKeys(char quas_button = 'q', char wex_button = 'w', 
@@ -21,7 +22,7 @@ struct InputKeys
 };
 
 
-//Lexer
+//////////////////////////////////////////////////////Lexer
 enum token_type : int
 {
 	quas	= 0,
@@ -47,7 +48,14 @@ private:
 };
 
 
-//Parser
+/////////////////////////////////////////////////////Parser
+constexpr size_t DEFAULT_CAPACITY_OF_BOOK = 3;
+
+constexpr int WEIGHT_OF_QUAS = 1;
+constexpr int WEIGHT_OF_WEX = 3;
+constexpr int WEIGHT_OF_EXORT = 27;
+
+
 struct Sphere
 {
 	Sphere() {}
@@ -67,13 +75,14 @@ public:
 
 	}
 
-	void add_sphere() const
+	void add_sphere(const Sphere& sphere) const
 	{
 
 	}
-	void invoke()	const
+	void invoke() const
 	{
 		if (size_of_book != capacity_of_book_) throw compile_error("There are less than 3 spheres in the book!");
+		//static unordered_map<size_t,spell>
 	}
 
 
