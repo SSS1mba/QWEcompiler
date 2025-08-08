@@ -1,11 +1,12 @@
 #pragma once
 
-#include <string>
+#include <iostream>
+#include "compile_errors.h"
 
 class Spell
 {
 public:
-	std::string virtual use_spell() {}
+	std::string virtual use_spell() { throw std::runtime_error("Spell -> use_spell()"); }
 
 };
 
@@ -90,3 +91,11 @@ public:
 	}
 };
 
+class ChaosMeteor : public Spell
+{
+public:
+	std::string use_spell() override
+	{
+		return "Chaos Meteor";
+	}
+};

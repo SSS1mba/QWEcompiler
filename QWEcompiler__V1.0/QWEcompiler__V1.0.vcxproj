@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="data_types.cpp" />
     <ClCompile Include="InstuctionController.cpp" />
     <ClCompile Include="Compiler.cpp" />
@@ -141,7 +142,9 @@
     <Text Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Book.h" />
     <ClInclude Include="data_types.h" />
+    <ClInclude Include="DEFAUT_VALUES.h" />
     <ClInclude Include="InstuctionController.h" />
     <ClInclude Include="Compiler.h" />
     <ClInclude Include="compile_errors.h" />

@@ -1,12 +1,11 @@
 #pragma once
 
 #include <vector>
-#include "compile_errors.h"
-#include "data_types.h"
+#include "DEFAUT_VALUES.h"
 #include "KeyWords.h"
 
 
-inline size_t skip_white_space(const std::string& str, const size_t start_pos = 0) noexcept
+inline size_t skip_white_space(const std::string& str, const size_t start_pos = 0) 
 {
 	size_t result = start_pos;
 
@@ -25,8 +24,7 @@ inline size_t skip_white_space(const std::string& str, const size_t start_pos = 
 }
 
 
-static std::allocator< std::vector<Token>> token_alloc;
-using token_traits = std::allocator_traits< std::allocator< std::vector<Token>>>;
+
 
 
 class Lexer
@@ -38,9 +36,10 @@ public:
 		token_traits::construct(token_alloc, tokens);
 		tokens->reserve(source_code.length());
 
-		for (size_t current = start; current < end; ++current)
+		for (size_t current = start;  ; ++current)
 		{
 			current = skip_white_space(source_code, current);
+			if (current >= end) break;
 
 			if (source_code[current] == keys.quas_button)	{ tokens->emplace_back(token_type::quas);	continue; }
 			if (source_code[current] == keys.wex_button)	{ tokens->emplace_back(token_type::wex);	continue; }

@@ -4,7 +4,6 @@
 #include "Parser.h"
 #include "InstuctionController.h"
 
-const Book DEFAULT_BOOK;
 
 class Compiler
 {
@@ -13,7 +12,7 @@ public :
 		const InstuctionController& IC = InstuctionController())
 		: lexer_(lexer), parser_(parser),instruction_controller_(IC) {}
 
-	void Compile(const std::string& source_code , const std::string& file_name)
+	void compile(const std::string& source_code , const std::string& file_name)
 	{
 		size_t start   = find_start(source_code);
 		InputKeys keys = find_keys (source_code);
@@ -21,7 +20,7 @@ public :
 
 		auto tokens = lexer_.analyse(source_code, start, end, keys);
 		auto instructions = parser_.parse(tokens);
-		instruction_controller_.compute(instructions);
+		instruction_controller_.compute(instructions, file_name);
 	}
 private:
 	size_t find_start(const std::string& source_code) const
@@ -44,24 +43,12 @@ private:
 		 
 
 		input_pos += WORD_INPUT_LENGHT;
-		char quas_key, wex_key, exort_key,invoke_key;
-
-		input_pos = skip_white_space(source_code, input_pos);
-		if (input_pos == std::string::npos) throw compile_error("Incorrect input: use	 :(");		
-		quas_key = source_code[input_pos];
 		
-		input_pos = skip_white_space(source_code, input_pos);
-		if (input_pos == std::string::npos) throw compile_error("Incorrect input: use	 :(");
-		wex_key = source_code[input_pos];
-
-		input_pos = skip_white_space(source_code, input_pos);
-		if (input_pos == std::string::npos) throw compile_error("Incorrect input: use	 :(");
-		exort_key = source_code[input_pos];
-
-		input_pos = skip_white_space(source_code, input_pos);
-		if (input_pos == std::string::npos) throw compile_error("Incorrect input: use	 :(");
-		invoke_key = source_code[input_pos];
-
+		char quas_key, wex_key, exort_key,invoke_key;
+		quas_key = find_key_after_input_word(source_code, input_pos);
+		wex_key = find_key_after_input_word(source_code, input_pos);
+		exort_key = find_key_after_input_word(source_code, input_pos);
+		invoke_key = find_key_after_input_word(source_code, input_pos);
 
 		return InputKeys(quas_key, wex_key, exort_key, invoke_key);
 	}
@@ -73,6 +60,12 @@ private:
 			throw compile_error("Cant find keyword amien		:(");
 
 		return end_pos;
+	}
+	inline char find_key_after_input_word(const std::string& source_code, size_t& input_pos) const
+	{
+		input_pos = skip_white_space(source_code, input_pos);
+		if (input_pos == std::string::npos) throw compile_error("Incorrect input: use	 :(");
+		return source_code[input_pos++];
 	}
 
 	Lexer lexer_;

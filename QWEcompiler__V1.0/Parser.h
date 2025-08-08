@@ -1,14 +1,9 @@
 #pragma once
 
 #include <vector>
-#include "compile_errors.h"
-#include "data_types.h"
 #include "KeyWords.h"
-
-
-
-static std::allocator< std::vector<Instuction>> instruction_alloc;
-using instuction_traits = std::allocator_traits< std::allocator< std::vector<Instuction>>>;
+#include "DEFAUT_VALUES.h"
+#include "Book.h"
 
 
 class Parser
@@ -24,7 +19,13 @@ public:
 		{
 			switch (token.GET_token_type())
 			{
-			//case token_type::exort: book_.add_sphere;
+			case token_type::quas:				 { book_.emplace_sphere(DEFAULT_WEIGHT_OF_QUAS);  break; }
+			case token_type::wex:				 { book_.emplace_sphere(DEFAULT_WEIGHT_OF_WEX);   break; }
+			case token_type::exort:				 { book_.emplace_sphere(DEFAULT_WEIGHT_OF_EXORT); break; }
+			case token_type::invoke:			 { instuctions->emplace_back(book_.invoke()); break;}
+
+				case token_type::empty_token:	 throw compile_error("empty_token in token_vector");
+				default:						 throw compile_error("unknown token");
 			}
 		}
 
@@ -36,6 +37,7 @@ public:
 private:
 	Book book_;
 };
+
 
 
 
