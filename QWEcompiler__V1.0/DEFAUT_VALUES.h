@@ -7,6 +7,11 @@
 static std::allocator< std::vector<Token>> token_alloc;
 using token_traits = std::allocator_traits< std::allocator< std::vector<Token>>>;
 
+//constexpr char DEFAULT_QUAS_KEY = 'q';     ->data_types.h
+//constexpr char DEFAULT_WEX_KEY = 'w';
+//constexpr char DEFAULT_EXORT_KEY = 'e';
+//constexpr char DEFAULT_INVOKE_KEY = 'r';
+
 //////////////////Parser
 static std::allocator< std::vector<Instuction>> instruction_alloc;
 using instuction_traits = std::allocator_traits< std::allocator< std::vector<Instuction>>>;

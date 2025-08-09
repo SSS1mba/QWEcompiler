@@ -6,96 +6,71 @@
 class Spell
 {
 public:
-	std::string virtual use_spell() { throw std::runtime_error("Spell -> use_spell()"); }
+	Spell()
+	{
 
+	}
+	std::string virtual use_spell() const noexcept { return spell_name_; }
+protected:
+	std::string spell_name_;
 };
 
 class ColdSnap : public Spell
 {
 public :
-	std::string use_spell() override
-	{
-		return "Cold Snap";
-	}
+	ColdSnap()  { spell_name_ = "Cold snap"; }
 };
 
 class GhostWalk : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Ghost Walk";
-	}
+	GhostWalk() { spell_name_ = "Ghost walk"; }
 };
 
 class IceWall : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Ice Wall";
-	}
+	IceWall() { spell_name_ = "Ice Wall"; }
 };
 
 class Tornado : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Tornado";
-	}
+	Tornado() { spell_name_ = "Tornado"; }
 };
 
 class EMP : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "EMP";
-	}
+	EMP() { spell_name_ = "EMP"; }
 };
 
 class Alacrity : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Alacrity";
-	}
+	Alacrity() { spell_name_ = "Alacrity"; }
 };
 
 class SunStrike : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Sun Strike";
-	}
+	SunStrike() { spell_name_ = "Sun Strike"; }
 };
 
 class ForgeSpirit : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Forge Spirit";
-	}
+	ForgeSpirit() { spell_name_ = "Forge Spirit"; }
 };
 
 class DeafeningBlast : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Deafening Blast";
-	}
+	DeafeningBlast() { spell_name_ = "Deafening Blast"; }
 };
 
 class ChaosMeteor : public Spell
 {
 public:
-	std::string use_spell() override
-	{
-		return "Chaos Meteor";
-	}
+	ChaosMeteor() { spell_name_ = "Chaos Meteor"; }
 };

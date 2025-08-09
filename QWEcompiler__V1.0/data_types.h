@@ -4,10 +4,18 @@
 
 
 //////////////////////////////////////////////////////General
+constexpr char DEFAULT_QUAS_KEY = 'q';
+constexpr char DEFAULT_WEX_KEY = 'w';
+constexpr char DEFAULT_EXORT_KEY = 'e';
+constexpr char DEFAULT_INVOKE_KEY = 'r';
+
+
 struct InputKeys
 {
-	InputKeys(char quas_button = 'q', char wex_button = 'w', 
-		char exort_button = 'e', char invole_button = 'r')
+	InputKeys(char quas_button = DEFAULT_QUAS_KEY,
+		char wex_button    =	 DEFAULT_WEX_KEY,
+		char exort_button  =	 DEFAULT_EXORT_KEY,
+		char invole_button =	 DEFAULT_INVOKE_KEY)
 		:quas_button(quas_button), wex_button(wex_button),
 		exort_button(exort_button), invole_button(invole_button)
 	{
