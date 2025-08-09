@@ -56,15 +56,11 @@ private:
 	size_t weight_;
 };
 
-//InstuctionController
+/////////////////////////////////////////////////////InstuctionController
 class Instuction
 {
 public:
-	Instuction()
-	{
-
-	}
-	Instuction(Spell& s) : spell(s) {}
+	Instuction(const Spell& s = Spell()) : spell(s) {}
 
 	inline Spell GET_spell()  const noexcept { return spell; }
 

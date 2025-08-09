@@ -19,8 +19,14 @@ public :
 		size_t end     = find_end  (source_code);
 
 		auto tokens = lexer_.analyse(source_code, start, end, keys);
+
 		auto instructions = parser_.parse(tokens);
+		token_traits::destroy(token_alloc, tokens);
+		token_traits::deallocate(token_alloc, tokens, 1);
+
 		instruction_controller_.compute(instructions, file_name);
+		instuction_traits::destroy(instruction_alloc, instructions);
+		instuction_traits::deallocate(instruction_alloc, instructions,1);
 	}
 private:
 	size_t find_start(const std::string& source_code) const

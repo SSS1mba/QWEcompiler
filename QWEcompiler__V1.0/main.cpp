@@ -9,7 +9,7 @@ int main()
         c.compile(test_string,"file1");
         return 0;
     }
-    catch (compile_error ce)
+    catch (const compile_error& ce)
     {
         std::cerr << "Compile error\n";
         std::cerr << ce.what() <<"\n";
