@@ -8,7 +8,7 @@ int main()
 
         Compiler c;
         std::string test_string("   input:qwer base qwe    rqqq r r amien");
-        c.compile(test_string,"file1");
+        c.compile(test_string,"file2");
 
         return 0;
     }

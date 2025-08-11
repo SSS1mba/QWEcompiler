@@ -28,7 +28,8 @@ q w e r
 amien 
 
 
-5)Результат программы : output.txt
+5) Ввод программы : input.qwe				(.qwe)
+   Результат программы : output.qwExe		(.qwExe)
 
 ///////////////ENGL/////////////////////
 Language syntax and rules
@@ -60,6 +61,7 @@ for example qwerwwwwrwwer
 amien 
 
 
-5)Result of the program : output.txt
+5) Input of programm  : input.qwe			(.qwe)
+   Output of programm : output.qwExe		(.qwExe)
 
 //////////Example of programm//////////

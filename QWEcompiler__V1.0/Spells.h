@@ -10,6 +10,10 @@ public:
 	{
 
 	}
+	virtual ~Spell()
+	{
+
+	}
 	std::string virtual use_spell() const noexcept { return spell_name_; }
 protected:
 	std::string spell_name_;
