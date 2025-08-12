@@ -11,7 +11,9 @@ int main()
         std::string source_code = read_from_file(path);
 
         std::string output_file_name = qwExe_file_name_reader();
+
         compiler.compile(source_code, output_file_name);
+
 
         return 0;
     }
