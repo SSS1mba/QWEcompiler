@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7027c4c5-6d59-49bd-b76d-16b2f4df8f1f}</ProjectGuid>
-    <RootNamespace>QWEcompilerV10</RootNamespace>
+    <ProjectGuid>{94d2d9dd-8f4c-4275-9984-55812dd90a4d}</ProjectGuid>
+    <RootNamespace>testconsole</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>QWEinterpitor__V1.0</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,9 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>QWE_compiler</TargetName>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -131,32 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Book.cpp" />
-    <ClCompile Include="data_types.cpp" />
-    <ClCompile Include="InstuctionController.cpp" />
-    <ClCompile Include="Compiler.cpp" />
-    <ClCompile Include="compile_errors.cpp" />
-    <ClCompile Include="Lexer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Parser.cpp" />
-    <ClCompile Include="Spells.cpp" />
-    <ClCompile Include="UserFileInput.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Book.h" />
-    <ClInclude Include="data_types.h" />
-    <ClInclude Include="DEFAUT_VALUES.h" />
-    <ClInclude Include="InstuctionController.h" />
-    <ClInclude Include="Compiler.h" />
-    <ClInclude Include="compile_errors.h" />
-    <ClInclude Include="KeyWords.h" />
-    <ClInclude Include="Lexer.h" />
-    <ClInclude Include="Parser.h" />
-    <ClInclude Include="Spells.h" />
-    <ClInclude Include="UserFileInput.h" />
+    <ClCompile Include="test_console.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
