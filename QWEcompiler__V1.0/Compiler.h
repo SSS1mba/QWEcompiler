@@ -11,7 +11,7 @@ public :
 	Compiler(const Lexer& lexer = Lexer(), const Parser& parser = Parser(DEFAULT_BOOK),
 		const InstuctionController& IC = InstuctionController());
 
-	void compile(const std::string& source_code, const std::string& file_name);
+	void compile(const std::string& source_code, const std::string& file_path, const std::string& file_name);
 private:
 	Lexer lexer_;
 	Parser parser_;

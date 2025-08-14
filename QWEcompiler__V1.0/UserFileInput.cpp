@@ -4,19 +4,20 @@ bool check_file_type(const std::string& file_name, const std::string& file_type)
 {
 	size_t size_of_file_type = file_type.length();
 
+	if (file_name.length() < size_of_file_type) return false;
+
 	return file_type == file_name.substr(file_name.size() - size_of_file_type, size_of_file_type);
 }
 
-std::string user_dialog()
+std::string user_dialog_to_findout_directory( const std::string& file_type) 
 {
-	std::string input;
 	std::string path;
 
 	while (true)
 	{
 		try
 		{
-			std::cout << "Enter " << SOURCE_CODE_FILE_TYPE<< " file location (or 'q' for exit): ";
+			std::cout << "Enter " << file_type << " file location (or 'q' for exit): ";
 			std::cin >> path;
 
 			if (path.empty())
@@ -27,19 +28,54 @@ std::string user_dialog()
 
 			if (path == "q") throw Exit();
 
-			if (path.front() == '"' && path.back() == '"') {
+			if (path.front() == '"' && path.back() == '"') //если путь указан с ковычками  (пример: "C:\Users")
+			{
 				path = path.substr(1, path.size() - 2);
 			}
 
-			if (!check_file_type(path, SOURCE_CODE_FILE_TYPE))
+			if (!check_file_type(path, file_type))
 			{
-				std::cerr << "it is not a " << SOURCE_CODE_FILE_TYPE << "file\n";
+				std::cerr << "it is not a " << file_type << " file\n";
 				continue;
+			}
+			
+
+			return path;
+		}
+		catch (const std::exception& ex)
+		{
+			std::cerr << "Reading error";
+		}
+	}
+
+}
+
+std::string qwExe_file_path_reader(const std::string& file_type)
+{
+	std::string path;
+	while (true)
+	{
+		try
+		{
+			std::cout << "Enter " << file_type << " file location (or 'q' for exit): ";
+			std::cin >> path;
+
+			if (path.empty())
+			{
+				std::cerr << "its a empty string\n";
+				continue;
+			}
+
+			if (path == "q") throw Exit();
+
+			if (path.front() == '"' && path.back() == '"') //если путь указан с ковычками  (пример: "C:\Users")
+			{
+				path = path.substr(1, path.size() - 2);
 			}
 
 			return path;
 		}
-		catch (std::exception& ex)
+		catch (const std::exception& ex)
 		{
 			std::cerr << "Reading error";
 		}
@@ -53,7 +89,7 @@ std::string qwExe_file_name_reader()
 
 	while (true)
 	{
-		std::cout << "Enter output file name(and path if need)\n";
+		std::cout << "Enter output file name :";
 		std::cin >> input;
 
 		if (input.empty())
@@ -62,9 +98,9 @@ std::string qwExe_file_name_reader()
 			continue;
 		}
 
-		if (input.length() > 6 && !check_file_type(input, COMPILE_FILE_TYPE)) // .qwExe - 6 символов
+		if (!check_file_type(input, COMPILED_FILE_TYPE))
 		{
-			input += COMPILE_FILE_TYPE;
+			input += COMPILED_FILE_TYPE;
 		}
 
 		return input;

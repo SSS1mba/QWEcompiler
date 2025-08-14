@@ -5,7 +5,7 @@ Compiler::Compiler(const Lexer& lexer, const Parser& parser, const InstuctionCon
 
 
 
-void Compiler::compile(const std::string& source_code, const std::string& file_name)
+void Compiler::compile(const std::string& source_code, const std::string& file_path, const std::string& file_name)
 {
 	size_t start = find_start(source_code);
 	InputKeys keys = find_keys(source_code);
@@ -17,7 +17,7 @@ void Compiler::compile(const std::string& source_code, const std::string& file_n
 	token_traits::destroy(token_alloc, tokens);
 	token_traits::deallocate(token_alloc, tokens, 1);
 
-	instruction_controller_.compute(instructions, file_name);
+	instruction_controller_.compute(instructions, file_path, file_name);
 	instuction_traits::destroy(instruction_alloc, instructions);
 	instuction_traits::deallocate(instruction_alloc, instructions, 1);
 }

@@ -1,21 +1,11 @@
 #include "Lexer.h"
 
 
-inline size_t Lexer::skip_white_space(const std::string& str, size_t start_pos)
-{
+inline size_t Lexer::skip_white_space(const std::string& str, size_t start_pos) {
 	size_t result = start_pos;
-	const size_t len = str.length();
-	char c;
-
-	while (result < len) {
-		c = str[result];
-		if (c == ' ' || c == '\t' || c == '\n') {
-			++result;
-			continue;
-		}
-		break;
+	while (result < str.size() && std::isspace(static_cast<unsigned char>(str[result]))) {
+		++result;
 	}
-
 	return result;
 }
 
