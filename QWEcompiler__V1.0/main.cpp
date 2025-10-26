@@ -16,7 +16,7 @@ int main()
         compiler.compile(source_code, output_file_path, output_file_name);
 
 
-        return 0;
+        system("pause");
     }
 
 
